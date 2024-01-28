@@ -12,6 +12,7 @@ func TestPerimeter(t *testing.T) {
 	}{
 		{structs.Rectangle{Width: 10, Height: 10}, 40.0},
 		{structs.Circle{Radius: 10}, 62.83185307179586},
+		{structs.Triangle{Base: 12, Height: 6}, 36.0},
 	}
 	for _, v := range checkPerimeter {
 		got := v.shape.Perimeter()
@@ -28,11 +29,12 @@ func TestArea(t *testing.T) {
 	}{
 		{structs.Rectangle{Width: 12, Height: 6}, 72.0},
 		{structs.Circle{Radius: 10}, 314.1592653589793},
+		{structs.Triangle{Base: 12, Height: 6}, 36.0},
 	}
 	for _, v := range checkArea {
 		got := v.shape.Area()
 		if got != v.want {
-			t.Errorf("got %g want %g", got, v.want)
+			t.Errorf("%#v: got %g want %g", v.shape, got, v.want)
 		}
 	}
 }
